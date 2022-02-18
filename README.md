@@ -1,10 +1,10 @@
 # Devops with Docker
 
 ## 1.1: Getting started
-![alt text](https://github.com/Mhooes/devops-with-docker/blob/adc093244669ca0cdcf5dab966865b2c107509ac/part-1/1.1/Exercise%201-1.png)
+![alt text](https://github.com/Mhooes/docker-course/blob/917ba89bcc3ad7ea27993efbb2591b1848e84f10/part-1/1.1/Exercise%201-1.png)
 
 ## 1.2: Cleanup
-![alt text](https://github.com/Mhooes/devops-with-docker/blob/adc093244669ca0cdcf5dab966865b2c107509ac/part-1/1.2/Exercise%201-2.png)
+![alt text](https://github.com/Mhooes/docker-course/blob/917ba89bcc3ad7ea27993efbb2591b1848e84f10/part-1/1.2/Exercise%201-2.png)
 
 ## 1.3: Secret message
 
@@ -23,8 +23,8 @@ Secret message is: 'You can find the source code here: https://github.com/docker
 ```
 
 ## 1.5: Sizes of images
-![alt text](https://github.com/Mhooes/devops-with-docker/blob/cdc44832b5a469d5c6bd14c7a1f6ff2b177e809b/part-1/1.5/Exercise%201-5.png)
-![alt text](https://github.com/Mhooes/devops-with-docker/blob/cdc44832b5a469d5c6bd14c7a1f6ff2b177e809b/part-1/1.5/Exercise%201-5-1.png)
+![alt text](https://github.com/Mhooes/docker-course/blob/917ba89bcc3ad7ea27993efbb2591b1848e84f10/part-1/1.5/Exercise%201-5.png)
+![alt text](https://github.com/Mhooes/docker-course/blob/917ba89bcc3ad7ea27993efbb2591b1848e84f10/part-1/1.5/Exercise%201-5-1.png)
 
 ## 1.6: Hello Docker Hub
 **Password:**
