@@ -1,0 +1,4 @@
+1)sudo docker run -d -it --name web ubuntu
+2)sudo docker exec web apt update && sudo docker exec web apt install -y curl
+3)sudo docker exec -it web sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+4)helsinki.fi
