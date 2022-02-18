@@ -71,5 +71,5 @@ CMD ./  input.sh
 touch logs
 ```
 ```
-sudo docker run -v /home/mhoes/Datos/Development/Estudio/Helsinki/Docker/docker-course/part-1/1.9/logs:/usr/src/app/text.log devopsdockeruh/simple-web-service
+sudo docker run -v "$(pwd)"/logs:/usr/src/app/text.log devopsdockeruh/simple-web-service
 ```
