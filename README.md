@@ -62,7 +62,7 @@ FROM ubuntu:20.04
 RUN apt update && apt install -y curl
 WORKDIR /usr/src/app
 COPY input.sh .
-CMD ./  input.sh
+CMD ./input.sh
 ```
 
 ## 1.9: Volumes
@@ -73,3 +73,86 @@ touch logs
 ```
 sudo docker run -v "$(pwd)"/logs:/usr/src/app/text.log devopsdockeruh/simple-web-service
 ```
+
+## 1.10: Ports open
+```
+sudo docker run -p 127.0.0.1:80:8080 devopsdockeruh/simple-web-service server
+```
+
+## 1.11: Spring
+```Dockerfile
+FROM openjdk:9-b130-jdk
+WORKDIR /usr/src/app
+EXPOSE 8080
+COPY . .
+RUN ./mvnw package
+CMD ["java", "-jar", "./target/docker-example-1.1.3.jar"]
+```
+
+## 1.12: Hello, frontend!
+**Dockerfile:**
+```Dockerfile
+FROM ubuntu
+WORKDIR /usr/src/app
+COPY . .
+RUN apt update && apt install -y curl && curl -sL https://deb.nodesource.com/setup_16.x | bash
+RUN apt install -y nodejs
+RUN npm install && npm install -g serve
+RUN npm run build
+CMD ["serve", "-s", "-l", "5000", "build"]
+EXPOSE 5000
+```
+
+## 1.13: Hello, backend!
+**Dockerfile:**
+```Dockerfile
+FROM ubuntu
+WORKDIR /usr/src/app
+COPY . .
+ENV PATH /usr/local/go/bin:$PATH
+RUN apt update && apt install -y wget gcc && wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz && tar -xvf go1.17.7.linux-amd64.tar.gz && mv go /usr/local 
+RUN go build 
+RUN go test
+CMD ./server
+EXPOSE 8080
+```
+**Command:**
+```bash
+ sudo docker build . -t backend && sudo docker run -d -p 127.0.0.1:8080:8080 backend
+ ```
+ 
+ ## 1.14: Environment
+**Dockerfile frontend:*
+```Dockerfile
+FROM ubuntu
+WORKDIR /usr/src/app
+COPY . .
+ENV REACT_APP_BACKEND_URL=http://localhost:8080
+RUN apt update && apt install -y curl && curl -sL https://deb.nodesource.com/setup_16.x | bash
+RUN apt install -y nodejs
+RUN npm install && npm install -g serve
+RUN npm run build
+CMD ["serve", "-s", "-l", "5000", "build"]
+EXPOSE 5000
+```
+**Dockerfile Backend:**
+```Dockerfile
+FROM ubuntu
+WORKDIR /usr/src/app
+COPY . .
+ENV PATH /usr/local/go/bin:$PATH
+ENV REQUEST_ORIGIN=http://localhost:5000
+RUN apt update && apt install -y wget gcc && wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz && tar -xvf go1.17.7.linux-amd64.tar.gz && mv go /usr/local 
+RUN go build 
+RUN go test
+CMD ./server
+EXPOSE 8080
+```
+**Commands:**
+```bash
+sudo docker build . -t frontend && sudo docker run -d -p 127.0.0.1:5000:5000 frontend 
+sudo docker build . -t backend && sudo docker run -d -p 127.0.0.1:8080:8080 backend
+```
+
+
+ 
