@@ -122,7 +122,7 @@ EXPOSE 8080
  ```
  
  ## 1.14: Environment
-**Dockerfile frontend:*
+**Dockerfile frontend:**
 ```Dockerfile
 FROM ubuntu
 WORKDIR /usr/src/app
